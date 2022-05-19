@@ -1,0 +1,24 @@
+<?php
+$err = error_reporting(10);
+echo"<pre>";
+print_r($_FILES);
+echo("</pre>");
+
+$obj = (object) @$_FILES['A1'];
+
+$dir = "./uploads";
+
+$up = move_uploaded_file($obj->tmp_name ,"{$dir}/{$obj->name}");
+?>
+<!DOCTYPE html>
+<html>
+<head>
+	<title>upload your files</title>
+</head>
+<body>
+<form method="post" enctype="multipart/form-data">
+	upload files:<input type="file" name="A1">
+	<input type="submit" name="A2" value="upload">
+</form>
+</body>
+</html>
